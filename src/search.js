@@ -7,9 +7,9 @@ const {
 } = require('graphql');
 
 /** */
-const TsAllType = require('../src/tsall/tsall.type');
-const ProgType = require('../src/program/prog.type');
-const ChanType = require('../src/channel/chan.type');
+const TsAllType = require('./tsall/tsall.type');
+const ProgType = require('./program/prog.type');
+const ChanType = require('./channel/chan.type');
 /** */
 const tsall = require('../data/tsall.obj');
 const program = require('../data/prog.obj');
