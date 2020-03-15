@@ -10,10 +10,12 @@ const {
 const TsAllType = require('./tsall/tsall.type');
 const ProgType = require('./program/prog.type');
 const ChanType = require('./channel/chan.type');
+const RtEqxInType = require('./bfe/rteqxin.type');
 /** */
 const tsall = require('../data/tsall.obj');
 const program = require('../data/prog.obj');
 const channel = require('../data/chan.obj');
+const rteqxin = require('../data/rteqxin.obj');
 /** */
 
 module.exports = new GraphQLSchema({
@@ -21,6 +23,11 @@ module.exports = new GraphQLSchema({
     name: 'Query',
     description: 'Root Query',
     fields: () => ({
+      rteqxins: {
+        type: new GraphQLList(RtEqxInType),
+        description: 'List of BFE In',
+        resolve: () => rteqxin
+      },
       tsalls: {
         type: new GraphQLList(TsAllType),
         description: 'List of TSALL',
