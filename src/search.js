@@ -11,11 +11,13 @@ const TsAllType = require('./tsall/tsall.type');
 const ProgType = require('./program/prog.type');
 const ChanType = require('./channel/chan.type');
 const RtEqxInType = require('./bfe/rteqxin.type');
+const DecType = require('./decoder/dec.type');
 /** */
 const tsall = require('../data/tsall.obj');
 const program = require('../data/prog.obj');
 const channel = require('../data/chan.obj');
 const rteqxin = require('../data/rteqxin.obj');
+const decoder = require('../data/dec.obj');
 /** */
 
 module.exports = new GraphQLSchema({
@@ -23,9 +25,24 @@ module.exports = new GraphQLSchema({
     name: 'Query',
     description: 'Root Query',
     fields: () => ({
+      decoders: {
+        type: new GraphQLList(DecType),
+        description: 'List of Decoder',
+        resolve: () => decoder
+      },
+      decoder: {
+        type: DecType,
+        description: 'A Decoder',
+        resolve: () => decoder
+      },
       rteqxins: {
         type: new GraphQLList(RtEqxInType),
         description: 'List of BFE In',
+        resolve: () => rteqxin
+      },
+      rteqxin: {
+        type: RtEqxInType,
+        description: 'A BFE',
         resolve: () => rteqxin
       },
       tsalls: {
@@ -35,7 +52,7 @@ module.exports = new GraphQLSchema({
       },
       tsall: {
         type: TsAllType,
-        description: 'List of TSALL',
+        description: 'A TSALL',
         args: {
           id: { type: GraphQLInt }
         },

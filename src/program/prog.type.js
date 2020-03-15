@@ -9,6 +9,7 @@ const {
 /** */
 const tsall = require('../../data/tsall.obj');
 const rteqxin = require('../../data/rteqxin.obj');
+const decoder = require('../../data/dec.obj');
 
 /** */
 module.exports = new GraphQLObjectType({
@@ -28,6 +29,12 @@ module.exports = new GraphQLObjectType({
       type: new GraphQLList(require('../bfe/rteqxin.type')),
       resolve: program => {
         return rteqxin.filter(eqxin => eqxin.progId === program.id);
+      }
+    },
+    ipDec: {
+      type: new GraphQLList(require('../decoder/dec.type')),
+      resolve: program => {
+        return decoder.filter(dec => dec.progId === program.id);
       }
     }
   })
