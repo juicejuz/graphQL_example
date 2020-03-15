@@ -10,6 +10,7 @@ const {
 const tsall = require('../../data/tsall.obj');
 const rteqxin = require('../../data/rteqxin.obj');
 const decoder = require('../../data/dec.obj');
+const dl = require('../../data/dl.obj');
 
 /** */
 module.exports = new GraphQLObjectType({
@@ -35,6 +36,12 @@ module.exports = new GraphQLObjectType({
       type: new GraphQLList(require('../decoder/dec.type')),
       resolve: program => {
         return decoder.filter(dec => dec.progId === program.id);
+      }
+    },
+    downlink: {
+      type: new GraphQLList(require('../dl/dl.type')),
+      resolve: program => {
+        return dl.filter(d => d.progId === program.id);
       }
     }
   })

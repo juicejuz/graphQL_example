@@ -1,0 +1,6 @@
+"query": "{programs {name, res, chanId, channels{tsId}}}"
+"query": "{channels{tsId, programs{name}}}"
+"query": "{channels{channel,tsid, tsidHex, mod, qam, pat{out,outHex, br}, pilotEpg{in,inHex,out,outHex,br}}}"
+"query": "{tsalls{id,video{outPid,outPidHex,outBr,tag}audio{line,outPid}, program{name,res},channel{channel,tsid,tsidHex,mod,qam, pat{out,outHex,br},pilotEpg{in,inHex,out,outHex,br}}}}"
+"query": "{programs{name, tsall{video{outPid}}}}"
+"query": "{programs{name, tsall{video{outPid},audio{line, outPid}channel{channel, tsid}}}}"
